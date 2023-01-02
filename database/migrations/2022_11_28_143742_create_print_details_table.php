@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('print_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('orders_id')->constrained('orders');
+            $table->foreignId('orders_id')->references('id')->on('orders')->onDelete('cascade');
             $table->string('color');
             $table->string('orientation');
             $table->string('page_size');
             $table->string('pp_sheet');
+            $table->string('filename');
             $table->timestamps();
+            $table->softdeletes();
             
         });
     }

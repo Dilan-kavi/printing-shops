@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('skeepers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->uniqid();
-            $table->foreignId('pcenters_id')->constrained();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('pcenters_id')->references('id')->on('pcenters')->onDelete('cascade');
             $table->string('fname');
             $table->string('lname');
             $table->string('email');    

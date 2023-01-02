@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('timeslots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pcenters_id')->constrained('pcenters')->uniqid();
-            $table->foreignId('orders_id')->constrained('orders')->uniqid();
-            $table->foreignId('customers_id')->constrained('customers')->uniqid();
-            $table->time(stime);
-            $table->time(etime);
+            $table->foreignId('pcenters_id')->references('id')->on('pcenters')->onDelete('cascade');
+            $table->time('stime');
+            $table->time('etime');
+            $table->boolean('status');
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

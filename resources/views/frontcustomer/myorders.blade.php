@@ -21,62 +21,49 @@
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th style="color: rgb(0,0,4);margin-right: 133px;padding-left: 0px;padding-right: 0px;">Order ID</th>
-                                                <th style="color: rgb(0,0,0);width: 315.1px;padding-right: 0px;margin-right: -18px;padding-left: 171px;margin-left: -152px;">Order Date</th>
-                                                <th style="color: rgb(0,0,0);width: 186.012px;margin-right: -12px;padding-right: 26px;padding-left: 49px;margin-left: -22px;">Order Time</th>
-                                                <th style="color: rgb(0,0,0);width: 175.438px;margin-right: 43px;padding-right: 0px;padding-left: 86px;">Status</th>
+                                                <th style="color: rgb(0,0,4);">Order ID</th>
+                                                <th style="color: rgb(0,0,0);">Ordered Date & Time</th>
+                                                <th style="color: rgb(0,0,0);">Center Name</th>
+                                                <th style="color: rgb(0,0,0);">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach ($orders as $order)
                                             <tr>
-                                                <td class="text-truncate" style="max-width: 200px;color: rgb(0,0,0);">p100</td>
-                                                <td class="text-truncate" style="max-width: 200px;color: rgb(0,0,0);padding-right: 38px;padding-left: 164px;margin-left: -149px;">23/Jun/2022</td>
-                                                <td style="color: rgb(0,0,0);padding-left: 58px;margin-left: -49px;padding-right: 23px;margin-right: -13px;">13:20</td>
-                                                <td class="text-center" style="color: rgb(0,0,0);margin-right: 43px;padding-right: 0px;padding-left: 68px;margin-left: -50px;">Pending</td>
+                                                <td class="text-truncate" style="max-width: 200px;color: rgb(0,0,0);">{{ $order->id }}</td>
+                                                <td class="text-truncate" style="max-width: 200px;color: rgb(0,0,0);">{{ $order->created_at }}</td>
+                                                <td class="text-truncate" style="color: rgb(0,0,0);">{{ $order->cname }}</td>
+                                                <td class="text-truncate" style="color: rgb(0,0,0);">Pending</td>
                                                 <td class="text-center" style="padding-left: 54px;">
                                                     <div class="mail-custom-btn">
-                                                        <a class="custom-btn light-btn" href="#" role="button" style="margin-right: -9px;">
+                                                        
+                                                        <a class="custom-btn light-btn" href="{{ route('fcustomers.edit',$order->id) }}" role="button" style="margin-right: -9px;">
                                                             <img src="assets/img/edit-property-xxl.png" width="19" height="19">
                                                         </a>
                                                     </div>
                                                     <div class="mail-custom-btn"></div>
                                                 </td>
                                                 <td class="text-center" style="padding-left: 5px;">
-                                                    <a class="custom-btn light-btn" href="#" role="button" style="margin-left: -3px;">
+                                                <form action="{{ route('fcustomers.destroy',$order->id) }}" method="POST">
+                                                    @csrf
+
+                                                    @method('DELETE')
+                                                    <a class="custom-btn light-btn" href="" role="button" style="margin-left: -3px;">
                                                         <i class="fa fa-trash text-warning"></i>
                                                     </a>
+                                                </form>
                                                     <div class="mail-custom-btn"></div>
                                                     <div class="mail-custom-btn"></div>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
+                                    
                                 </div>
                             </div>
                             <div class="card-footer " style="border-color: #858796;">
-                                <nav>
-                                    <ul class="pagination pagination-sm mb-0 justify-content-center">
-                                        <li class="page-item" style="color: rgb(255,193,7);">
-                                            <a class="page-link" aria-label="Previous" href="#">
-                                                <span aria-hidden="true">«</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item" style="color: rgb(255,193,7);">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item" style="color: rgb(255,193,7);background: #ffffff;">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item" style="color: rgb(255,193,7);">
-                                            <a class="page-link" href="#">3</a>
-                                        </li>
-                                        <li class="page-item" style="color: rgb(255,193,7);">
-                                            <a class="page-link" aria-label="Next" href="#">
-                                                <span aria-hidden="true">»</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                <div><br></div>
                             </div>
                         </div>
                     </div>

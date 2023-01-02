@@ -18,16 +18,16 @@ class PcenterSeeder extends Seeder
         Pcenter::insert(
             [
                 [
-                    'cname'=>'slr',
+                    'cname'=>'Self Learning Area Book Shop',
                     'clocation'=>'Self Learning Area',
                 ],
                 [
-                    'cname'=>'canteen',
-                    'clocation'=>'SScience canteen',
+                    'cname'=>'Main Library Book Shop',
+                    'clocation'=>'Main Library',
                 ],
                 [
-                    'cname'=>'lib',
-                    'clocation'=>'Main Library',
+                    'cname'=>'Science canteen Book Shop',
+                    'clocation'=>'Science canteen',
                 ],
             ]
 

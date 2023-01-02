@@ -14,6 +14,7 @@
                         <th>Index Number</th>
                         <th>Contact Number</th>
                         <th>Ordered Date & Time&nbsp;</th>
+                        <th>Time slot</th>
                         
                         <th>Status</th>
                     </tr>
@@ -27,11 +28,15 @@
                         
                         <td>{{ $order->contact_no }}</td>
                         <td>{{ $order->created_at }}</td>
+
+                        <td>{{ $order->timeslot }}</td>
                         <td>
-                            <form action="{{ route('fskeepers.show',$order->id) }}" method="POST">
                                 <a class="btn btn-warning link-light" href="{{ route('fskeepers.show',$order->id) }}">View</a>
-                                <button type="button" class="btn btn-danger">Reject</button>
-                                <button type="button" class="btn btn-success">Processing</button>
+                          
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-danger" href="{{ route('fcustomers.destroy',$order->id) }}">Delete</button>
+                        
+                                    <button type="button" class="btn btn-success">Processing</button>
 
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notification</button>
                                 

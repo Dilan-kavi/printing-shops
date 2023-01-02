@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
     <link rel="stylesheet" href="{{ asset('assets/css/login-form-styles.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/login-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/NavBar-with-pictures.css') }}">
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('pick-hours-availability-calendar/css/mark-your-calendar.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome.min.css') }}">
 
 <body id="page-top">
     <div id="wrapper">
@@ -82,7 +88,7 @@
                                         <span class="d-none d-lg-inline me-2 text-gray-600 small"> {{ Auth::user()->name }}</span>
                                         <img class="border rounded-circle img-profile" src=""></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('profile') }}">
                                             <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile
                                         </a>
                                         <a class="dropdown-item" href="#">
@@ -117,6 +123,7 @@
     </div>
 
     <!-- footer -->
+    
     <footer class="bg-white sticky-footer fixed-bottom">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
@@ -126,5 +133,7 @@
 
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme.js') }}"></script>
+    <script src="{{ asset('assets/js/bs-init.js') }}"></script>
+    
 </body>
 </html> 

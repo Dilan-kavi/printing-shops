@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('customers_pcenters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('index_no')->constrained('customers')->uniqid();
-            $table->foreignId('pcenters_id')->constrained('pcenters')->uniqid();
+            $table->foreignId('customers_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreignId('pcenters_id')->references('id')->on('pcenters')->onDelete('cascade');
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

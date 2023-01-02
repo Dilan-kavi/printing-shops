@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Orders</h2>
+                <h2>Time Slot Management</h2>
             </div>
 
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('orders.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('timeslots.create') }}"> Create new Time Slot</a>
             </div>
         </div>
     </div>
@@ -23,22 +23,26 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Amount</th>
-            <th>Method of payment</th>
+            <th>Strat time</th>
+            <th>End Time</th>
+            <th>Status</th>
+            <th>Center Name</th>
             <th width="280px">Action</th>
         </tr>
 
-	    @foreach ($orders as $order)
+	    @foreach ($tslots as $tslot)
 
 	    <tr>
 	        <td>{{ ++$i }}</td>
-	        <td>{{ $order->amount }}</td>
-	        <td>{{ $order->pay_method }}</td>
+	        <td>{{ $tslot->stime }}</td>
+	        <td>{{ $tslot->etime }}</td>
+            <td>{{ $tslot->status }}</td>
+            <td>{{ $tslot->cname}}</td>
            
 	        <td>
-                <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('orders.show',$order->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('orders.edit',$order->id) }}">Edit</a>
+                <form action="{{ route('timeslots.destroy',$tslot->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('timeslots.show',$tslot->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('timeslots.edit',$tslot->id) }}">Edit</a>
                     @csrf
 
                     @method('DELETE')
@@ -48,5 +52,5 @@
 	    </tr>
 	    @endforeach
     </table>
-    {!! $orders->links() !!}
+    {!! $tslots->links() !!}
 @endsection

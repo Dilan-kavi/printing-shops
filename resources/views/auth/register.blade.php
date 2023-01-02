@@ -29,7 +29,12 @@
         </div>
     </nav>
     <header class="masthead" style="background-image:url('assets/img/header-bg.jpg');">
-        <div class="container"></div>
+        <div class="container">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif</div>
     </header>
     <section id="about">
         <div class="container full-height">

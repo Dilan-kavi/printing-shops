@@ -81,8 +81,8 @@
         </div>
     </footer>
     
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/agency.js"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/agency.js') }}"></script>
 </body>
 
 </html>

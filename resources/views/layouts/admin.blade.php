@@ -13,12 +13,9 @@
         <div id="wrapper">
 
             <!-- side navigation bar -->
-            <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="color: rgb(0,0,0);background: rgb(47,52,56);">
                 <div class="container-fluid d-flex flex-column p-0">
-                    <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.html">
-                        <div class="sidebar-brand-icon rotate-n-15">
-
-                        </div>
+                    <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                         <div class="sidebar-brand-text mx-0">
                             <span>Printing Shop</span><br>
                             <span>Management System</span>
@@ -32,10 +29,11 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item" >
                             <a class="nav-link" href="{{ route('customers.index') }}"><span>Customer</span></a>
                             <a class="nav-link" href="{{ route('skeepers.index') }}"><span>Shop Keeper</span></a>
                             <a class="nav-link" href="{{ route('orders.index') }}"><span>Order</span></a>
+                            <a class="nav-link" href="{{ route('timeslots.index') }}"><span>Time Slot</span></a>
                             <a class="nav-link" href="{{ route('pcenters.index') }}"><span>Printing Center</span></a>
                             <a class="nav-link" href="{{ route('print_details.index') }}"><span>Print Details</span></a>
                             <a class="nav-link" href="{{ route('notifications.index') }}"><span>Notifications</span></a>

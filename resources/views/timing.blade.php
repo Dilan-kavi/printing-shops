@@ -1,10 +1,9 @@
-<!doctype html>
-<html>
+@extends('layouts.customer')
+
+
+@section('content')
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>jQuery Mark Your Calendar Plugin Example</title>
+
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{asset('pick-hours-availability-calendar/css/mark-your-calendar.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -13,126 +12,100 @@
       .container { margin: 150px auto; }
     </style>
 </head>
-<body><div id="jquery-script-menu">
-<div class="jquery-script-center">
-<ul>
-<li><a href="https://www.jqueryscript.net/time-clock/pick-hours-availability-calendar.html">Download This Plugin</a></li>
-<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
-</ul><div id="carbon-block"></div>
-<div class="jquery-script-ads"><script type="text/javascript"><!--
-google_ad_client = "ca-pub-2783044520727903";
-/* jQuery_demo */
-google_ad_slot = "2780937993";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script></div>
-<div class="jquery-script-clear"></div>
-</div>
-</div>
-  <div class="container">
-    <h1>jQuery Mark Your Calendar Plugin Example</h1>
-    <div id="picker"></div>
-    <div>
-        <p>Selected dates / times:</p>
-        <div id="selected-dates"></div>
+<body>
+  <div id="jquery-script-menu">
+    <div class="jquery-script-center">
+      <div id="carbon-block"></div>
+        <div class="jquery-script-ads">
+          <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-2783044520727903";
+            /* jQuery_demo */
+            google_ad_slot = "2780937993";
+            google_ad_width = 728;
+            google_ad_height = 90;
+            //-->
+          </script>
+          <script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+        </div>
+        <div class="jquery-script-clear"></div>
+      </div>
     </div>
-  </div>
+    <div class="container">
+      <h3>Select Time Slot</h3>
+      <div id="picker"></div>
+        <div>
+          <p>Selected dates / times:</p>
+            <div id="selected-dates"></div>
+              <form action="{{ route('create') }}" method="POST">
+               @csrf
+                <input type="hidden" id="selected-datess" name="timeslot">
+                <input type="hidden" id="shop" name="shop" value={{$id}}>
+                  <button type="submit" class="btn btn-primary">Next</button>
+            
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script type="text/javascript" src="{{asset('pick-hours-availability-calendar/js/mark-your-calendar.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets\js\mark-your-calendar.js' )}}"></script>
     <script type="text/javascript">
+      
+     
         (function($) {
+          var app = @json($time);
+          console.log(app[0])
           $('#picker').markyourcalendar({
+            
             startDate: new Date(),
             availability: [
-              ['1:00', '2:00', '3:00', '4:00', '5:00']
-             
-            ],
+              app[0],
+              app[1],
+              app[2],
+              app[3],
+              app[4],
+              app[5],
+              app[6]
+                ],
             
             isMultiple: false,
             onClick: function(ev, data) {
               // data is a list of datetimes
-              console.log(data);
+              
               var html = ``;
               $.each(data, function() {
                 var d = this.split(' ')[0];
                 var t = this.split(' ')[1];
-                html += `<p>` + d + ` ` + t + `</p>`;
+                html += `` + d + `, ` + t + ``;
               });
+              
+              $( '#selected-datess' ).val(html);
               $('#selected-dates').html(html);
             },
             onClickNavigator: function(ev, instance) {
               var arr = [
                 [
-                  ['4:00', '5:00', '6:00', '7:00', '8:00'],
-                  ['1:00', '5:00'],
-                  ['2:00', '5:00'],
-                  ['3:30'],
-                  ['2:00', '5:00'],
-                  ['2:00', '5:00'],
-                  ['2:00', '5:00']
-                ],
-                [
-                  ['2:00', '5:00'],
-                  ['4:00', '5:00', '6:00', '7:00', '8:00'],
-                  ['4:00', '5:00'],
-                  ['2:00', '5:00'],
-                  ['2:00', '5:00'],
-                  ['2:00', '5:00'],
-                  ['2:00', '5:00']
-                ],
-                [
-                  ['4:00', '5:00'],
-                  ['4:00', '5:00'],
-                  ['4:00', '5:00', '6:00', '7:00', '8:00'],
-                  ['3:00', '6:00'],
-                  ['3:00', '6:00'],
-                  ['3:00', '6:00'],
-                  ['3:00', '6:00']
-                ],
-                [
-                  ['4:00', '5:00'],
-                  ['4:00', '5:00'],
-                  ['4:00', '5:00'],
-                  ['4:00', '5:00', '6:00', '7:00', '8:00'],
-                  ['4:00', '5:00'],
-                  ['4:00', '5:00'],
-                  ['4:00', '5:00']
-                ],
-                [
-                  ['4:00', '6:00'],
-                  ['4:00', '6:00'],
-                  ['4:00', '6:00'],
-                  ['4:00', '6:00'],
-                  ['4:00', '5:00', '6:00', '7:00', '8:00'],
-                  ['4:00', '6:00'],
-                  ['4:00', '6:00']
-                ],
-                [
-                  ['3:00', '6:00'],
-                  ['3:00', '6:00'],
-                  ['3:00', '6:00'],
-                  ['3:00', '6:00'],
-                  ['3:00', '6:00'],
-                  ['4:00', '5:00', '6:00', '7:00', '8:00'],
-                  ['3:00', '6:00']
-                ],
-                [
-                  ['3:00', '4:00'],
-                  ['3:00', '4:00'],
-                  ['3:00', '4:00'],
-                  ['3:00', '4:00'],
-                  ['3:00', '4:00'],
-                  ['3:00', '4:00'],
-                  ['4:00', '5:00', '6:00', '7:00', '8:00']
+                  
+              app[0],
+                
+              app[1],
+              
+              app[2],
+              
+              app[3],
+              
+              app[4],
+              
+              app[5],
+
+              app[6],
+                
                 ]
+              
               ]
-              var rn = Math.floor(Math.random() * 10) % 7;
-              instance.setAvailability(arr[rn]);
+             
+              instance.setAvailability(arr[0]);
             }
           });
         })(jQuery);
@@ -165,5 +138,5 @@ try {
   console.log(error);
 }
 </script>
-</body>
-</html>
+
+@endsection

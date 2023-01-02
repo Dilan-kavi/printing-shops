@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id()->uniqid();
-            $table->string('payid')->uniqid();
-            $table->foreignId('skeepers_id')->constrained('skeepers');
-            $table->foreignId('customers_id')->constrained('customers');;
+            $table->string('timeslot');
+            $table->foreignId('pcenters_id')->references('id')->on('pcenters')->onDelete('cascade');
+            $table->foreignId('customers_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

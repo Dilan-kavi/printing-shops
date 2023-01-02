@@ -20,4 +20,5 @@ class Timeslot extends Model
     public function customer(){
         return $this->hasOne(Customer::class);
     }
+    protected $guarded = [];
 }

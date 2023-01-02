@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id( );
-            $table->foreignId('user_id')->constrained('users')->uniqid();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('index_no')->unique();
             $table->string('fname');
             $table->string('lname');

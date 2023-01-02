@@ -105,6 +105,8 @@ class RegisterController extends Controller
 
         $user->assignRole('Customer');
 
+        // return redirect()->route('/login')
+        //     ->with('success','Registered successfully.');
 
     }
 }

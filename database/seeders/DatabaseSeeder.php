@@ -23,12 +23,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CreateAdminUserSeeder::class,
-            CustomerSeeder::class,
             PermissionTableSeeder::class,
-            SkeeperSeeder::class,
             PcenterSeeder::class,
-            Print_detailSeeder::class,
-            OrderSeeder::class,
+            TimeslotSeeder::class,
+            // RoleSeeder::class,
         ]);
     }
 }

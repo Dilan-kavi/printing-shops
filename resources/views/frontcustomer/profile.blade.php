@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <div class="container profile profile-view" id="profile" style="box-shadow: 0px 0px 20px rgb(0,1,4);">
         <div class="row">
             <div class="col-md-12 alert-col relative">
@@ -25,19 +26,19 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <label class="form-label">Firstname </label>
-                                <input class="form-control" type="text" name="firstname">
+                                <input class="form-control" type="text" name="firstname" value="{{ $customer->fname }}">
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <label class="form-label">Lastname </label>
-                                <input class="form-control" type="text" name="lastname">
+                                <input class="form-control" type="text" name="lastname" value="{{ $customer->lname }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-label">Email </label>
-                        <input class="form-control" type="email" autocomplete="off" required="" name="email">
+                        <input class="form-control" type="email" autocomplete="off" required="" name="email" value="{{ $customer->email }}">
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
